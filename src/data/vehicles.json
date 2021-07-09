@@ -1,0 +1,37 @@
+[
+   {
+      "id": 1,
+      "vehicleName":"vehicle",
+      "vehicleType":"Car",
+      "plateNumber":"SK-1234-AB",
+      "vehicleBrand":"Audi"
+   },
+   {
+      "id": 2,
+      "vehicleName":"vehicle-2",
+      "vehicleType":"Van",
+      "plateNumber":"SK-5555-AB",
+      "vehicleBrand":"Mercedes"
+   },
+   {
+      "id": 3,
+      "vehicleName":"vehicle-3",
+      "vehicleType":"Truck",
+      "plateNumber":"ST-9852-AB",
+      "vehicleBrand":"BMW"
+   },
+   {
+      "id": 4,
+      "vehicleName":"vehicle-4",
+      "vehicleType":"Trailer",
+      "plateNumber":"PP-7412-AB",
+      "vehicleBrand":"Citroen"
+   },
+   {
+      "id": 5,
+      "vehicleName":"vehicle-5",
+      "vehicleType":"Container",
+      "plateNumber":"SK-3654-AB",
+      "vehicleBrand":"Opel"
+   }
+]
