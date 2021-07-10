@@ -173,14 +173,22 @@
   export default {
     name:"Form",
     data: () => ({
+      // form config
       error: false,
       errorPlate: "",
       valid: true,
       showModal: false,
-       dialog: false,
+      dialog: false,
+      nameRules: [
+        v => !!v || 'Name is required',
+        v => (v && v.length <= 50) || 'Name must be less than 50 characters',
+        
+      ],
+      // form properties
+      id: '',
       vehicleName: '',
       plateNumber: '',
-      vehicleType: null,
+      vehicleType: '',
       types: [
         'Car',
         'Truck',
@@ -189,22 +197,15 @@
         'Trailer',
         'Dupmer',
       ],
+      vehicleBrand: "",
       models: ['Audi', 'BMW', 'Citroen', 'Honda', 'Hyundai', 'Mercedes', 'Nissan',
               'Opel', 'Suzuki', 'Toyota', 'Volkswagen'],
-      
-      vehicleBrand: "",
       date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-      date1: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       modal: false,
+      date1: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       modal1: false,
       nowDate: new Date().toISOString(),
-      nameRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length <= 50) || 'Name must be less than 50 characters',
-        
-      ],
     }),
-
     methods:{
       validate () {
         let myRe = new RegExp('[A-Z]{2}-[0-9]{4}-[A-Z]{2}');
@@ -230,9 +231,9 @@
       saveVehicle() {
         let vehicleData = this;
 
-        let existVehicle = this.$root.vehicles.find(v => v.id === this.id);
+        let existVehicle = this.$root.vehicles.find(v => v.id === vehicleData.id);
         if(typeof existVehicle === 'undefined') {
-          let maxID = this.$root.vehicles.reduce((a, b) => (a.id > b.id ? a : b));
+          let maxID = this.$root.vehicles.reduce((a, b) => (a.id > b.id ? a.id : b.id));
           let newVehicle = {
             "id": maxID + 1,
             "vehicleName": vehicleData.vehicleName,
@@ -284,6 +285,7 @@
           }
 
           return {
+            "id": "",
             "vehicleName":"",
             "vehicleType":"",
             "plateNumber":"",
